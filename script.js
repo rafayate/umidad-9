@@ -1,38 +1,48 @@
 
-function jugar() {
-    let seguirJugando = true;
+let victoriasUsuario = 0;
+let victoriasMaquina = 0;
 
-    while (seguirJugando) {
-        let usuario = prompt("Elegí: Piedra, Papel o Tijera").toLowerCase();
+while (victoriasUsuario < 2 && victoriasMaquina < 2) {
 
-        let computadora = Math.random();
+    let jugada = prompt("Elegí: Piedra, Papel o Tijera").toLowerCase();
 
-        if (computadora < 0.33) {
-            computadora = "piedra";
-        } else if (computadora < 0.66) {
-            computadora = "papel";
-        } else {
-            computadora = "tijera";
-        }
+    let azar = Math.random();
+    let jugadaMaquina = "";
 
-        if (usuario != "piedra" && usuario != "papel" && usuario != "tijera") {
-            alert("Opción inválida. Tenés que elegir piedra, papel o tijera.");
-        } else {
-            alert("Vos elegiste: " + usuario + "\nLa computadora eligió: " + computadora);
-
-            if (usuario == computadora) {
-                alert("¡Empate!");
-            } else if (
-                (usuario == "piedra" && computadora == "tijera") ||
-                (usuario == "papel" && computadora == "piedra") ||
-                (usuario == "tijera" && computadora == "papel")
-            ) {
-                alert("¡Ganaste!");
-            } else {
-                alert("¡Ganó la computadora!");
-            }
-        }
-
-        seguirJugando = confirm("¿Te gustaría volver a jugar?");
+    if (azar < 0.33) {
+        jugadaMaquina = "piedra";
+    } else if (azar < 0.66) {
+        jugadaMaquina = "papel";
+    } else {
+        jugadaMaquina = "tijera";
     }
+
+    console.log(`La máquina eligió: ${jugadaMaquina}`);
+
+    if (jugada != "piedra" && jugada != "papel" && jugada != "tijera") {
+        alert("Jugada inválida. Intentá de nuevo.");
+    } else {
+        alert(`Vos elegiste: ${jugada}
+La máquina eligió: ${jugadaMaquina}`);
+
+        if (jugada == jugadaMaquina) {
+            alert("¡Empate!");
+        } else if (
+            (jugada == "piedra" && jugadaMaquina == "tijera") ||
+            (jugada == "papel" && jugadaMaquina == "piedra") ||
+            (jugada == "tijera" && jugadaMaquina == "papel")
+        ) {
+            alert("¡Ganaste esta ronda!");
+            victoriasUsuario++;
+        } else {
+            alert("¡Ganó la máquina esta ronda!");
+            victoriasMaquina++;
+        }
+    }
+
+    console.log(`Usuario: ${victoriasUsuario} | Máquina: ${victoriasMaquina}`);
 }
+
+let campeon = victoriasUsuario == 2 ? "¡Ganaste el torneo!" : "¡La máquina ganó el torneo!";
+
+alert(campeon);
