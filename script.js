@@ -1,48 +1,56 @@
 
-let victoriasUsuario = 0;
-let victoriasMaquina = 0;
+let playerScore = 0;
+let computerScore = 0;
 
-while (victoriasUsuario < 2 && victoriasMaquina < 2) {
+function playGame(playerChoice) {
 
-    let jugada = prompt("Elegí: Piedra, Papel o Tijera").toLowerCase();
+    const options = ["Piedra", "Papel", "Tijera"];
 
-    let azar = Math.random();
-    let jugadaMaquina = "";
+    // La máquina elige al azar
+    const randomNumber = Math.floor(Math.random() * 3);
+    const computerChoice = options[randomNumber];
 
-    if (azar < 0.33) {
-        jugadaMaquina = "piedra";
-    } else if (azar < 0.66) {
-        jugadaMaquina = "papel";
-    } else {
-        jugadaMaquina = "tijera";
+    // Mostrar las elecciones
+    document.getElementById("playerChoice").textContent =
+        "Tu elección: " + playerChoice;
+
+    document.getElementById("computerChoice").textContent =
+        "Elección de la máquina: " + computerChoice;
+
+    let result = "";
+
+    // Determinar quién ganó
+    if (playerChoice === computerChoice) {
+        result = "¡Empate! 🤝";
+    }
+    else if (
+        (playerChoice === "Piedra" && computerChoice === "Tijera") ||
+        (playerChoice === "Papel" && computerChoice === "Piedra") ||
+        (playerChoice === "Tijera" && computerChoice === "Papel")
+    ) {
+        result = "¡Ganaste! 🎉";
+        playerScore++;
+    }
+    else {
+        result = "¡Ganó la máquina! 🤖";
+        computerScore++;
     }
 
-    console.log(`La máquina eligió: ${jugadaMaquina}`);
-
-    if (jugada != "piedra" && jugada != "papel" && jugada != "tijera") {
-        alert("Jugada inválida. Intentá de nuevo.");
-    } else {
-        alert(`Vos elegiste: ${jugada}
-La máquina eligió: ${jugadaMaquina}`);
-
-        if (jugada == jugadaMaquina) {
-            alert("¡Empate!");
-        } else if (
-            (jugada == "piedra" && jugadaMaquina == "tijera") ||
-            (jugada == "papel" && jugadaMaquina == "piedra") ||
-            (jugada == "tijera" && jugadaMaquina == "papel")
-        ) {
-            alert("¡Ganaste esta ronda!");
-            victoriasUsuario++;
-        } else {
-            alert("¡Ganó la máquina esta ronda!");
-            victoriasMaquina++;
-        }
-    }
-
-    console.log(`Usuario: ${victoriasUsuario} | Máquina: ${victoriasMaquina}`);
+    // Actualizar el resultado y los puntos
+    document.getElementById("resultText").textContent = result;
+    document.getElementById("playerScore").textContent = playerScore;
+    document.getElementById("computerScore").textContent = computerScore;
 }
 
-let campeon = victoriasUsuario == 2 ? "¡Ganaste el torneo!" : "¡La máquina ganó el torneo!";
+// Reiniciar el juego
+function resetGame() {
+    playerScore = 0;
+    computerScore = 0;
 
-alert(campeon);
+    document.getElementById("playerScore").textContent = 0;
+    document.getElementById("computerScore").textContent = 0;
+
+    document.getElementById("playerChoice").textContent = "Tu elección: -";
+    document.getElementById("computerChoice").textContent = "Elección de la máquina: -";
+    document.getElementById("resultText").textContent = "¡Que empiece el juego!";
+}
