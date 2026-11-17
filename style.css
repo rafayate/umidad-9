@@ -1,44 +1,142 @@
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
-    margin: 0;
-    padding: 30px;
+    background: linear-gradient(135deg, #141e30, #243b55);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.container {
+    background: #ffffff;
+    color: #222;
+    width: 90%;
+    max-width: 550px;
+    padding: 35px;
+    border-radius: 20px;
     text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
 h1 {
-    color: #222;
-    margin-bottom: 40px;
+    font-size: 28px;
+    margin-bottom: 10px;
 }
 
-section {
-    background-color: white;
-    padding: 30px;
-    margin: 25px auto;
-    max-width: 600px;
-    border-radius: 12px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+.subtitle {
+    color: #777;
+    margin-bottom: 25px;
+}
+
+.score {
+    display: flex;
+    justify-content: space-around;
+    background: #f0f2f5;
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+}
+
+.score h3 {
+    font-size: 16px;
+    color: #555;
+}
+
+.score p {
+    font-size: 35px;
+    font-weight: bold;
+    color: #243b55;
+    margin-top: 8px;
 }
 
 h2 {
-    color: #333;
+    margin-bottom: 20px;
 }
 
-p {
-    color: #666;
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
 }
 
-button {
-    background-color: #222;
+.buttons button {
+    background: #243b55;
+    color: white;
+    border: none;
+    padding: 18px;
+    border-radius: 15px;
+    font-size: 35px;
+    cursor: pointer;
+    transition: 0.3s;
+    min-width: 95px;
+}
+
+.buttons button span {
+    display: block;
+    font-size: 14px;
+    margin-top: 8px;
+}
+
+.buttons button:hover {
+    background: #3c638e;
+    transform: translateY(-5px);
+}
+
+.result {
+    background: #f0f2f5;
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+.result p {
+    margin: 10px 0;
+    color: #555;
+}
+
+#resultText {
+    margin-top: 20px;
+    color: #243b55;
+}
+
+.reset {
+    background: #e74c3c;
     color: white;
     border: none;
     padding: 12px 25px;
-    border-radius: 6px;
+    border-radius: 10px;
+    font-size: 15px;
     cursor: pointer;
-    font-size: 16px;
 }
 
-button:hover {
-    background-color: #444;
+.reset:hover {
+    background: #c0392b;
+}
+
+@media (max-width: 450px) {
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 23px;
+    }
+
+    .buttons {
+        gap: 8px;
+    }
+
+    .buttons button {
+        min-width: 0;
+        padding: 14px;
+    }
 }
