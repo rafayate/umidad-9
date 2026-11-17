@@ -9,14 +9,37 @@
 </head>
 <body>
 
-    <h1>✊ Piedra, Papel o Tijera ✌️</h1>
+    <div class="container">
+        <h1>✊ Piedra, Papel o Tijera ✌️</h1>
+        <p class="subtitle">¡Jugá contra la máquina!</p>
 
-    <section>
-        <h2>¡Jugá contra la computadora!</h2>
-        <p>Elegí piedra, papel o tijera y descubrí quién gana.</p>
+        <div class="score">
+            <div>
+                <h3>Vos</h3>
+                <p id="playerScore">0</p>
+            </div>
+            <div>
+                <h3>Máquina</h3>
+                <p id="computerScore">0</p>
+            </div>
+        </div>
 
-        <button onclick="jugar()">Jugar</button>
-    </section>
+        <h2>Elegí tu jugada:</h2>
+
+        <div class="buttons">
+            <button onclick="playGame('Piedra')">✊<span>Piedra</span></button>
+            <button onclick="playGame('Papel')">✋<span>Papel</span></button>
+            <button onclick="playGame('Tijera')">✌️<span>Tijera</span></button>
+        </div>
+
+        <div class="result">
+            <p id="playerChoice">Tu elección: -</p>
+            <p id="computerChoice">Elección de la máquina: -</p>
+            <h2 id="resultText">¡Que empiece el juego!</h2>
+        </div>
+
+        <button class="reset" onclick="resetGame()">Reiniciar partida</button>
+    </div>
 
     <script src="script.js"></script>
 </body>
